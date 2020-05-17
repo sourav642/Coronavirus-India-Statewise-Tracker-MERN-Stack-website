@@ -23,7 +23,7 @@ class  resultList  extends  Component {
 componentDidMount() {
   var  self  =  this;
   serviceObj.getResult().then(function (res) {
-    console.log('Data Received: /state-wise-list');
+    console.log(res);
     self.setState({ dataList: res , Total : res.pop()})
 
   });
@@ -32,7 +32,7 @@ componentDidMount() {
 graphData(stateName) {
   var self = this;
   self.setState({loading:true},()=>{serviceObj.getTrends(stateName).then(function (res) {
-    console.log(`Data Received: /recent-treds?state=${stateName}`);
+    console.log(res);
     self.setState({ loading:false, graph_data: res})
   });
 });
@@ -93,7 +93,7 @@ return(
               <td> {row.state} {'\t\t'}               
           <Modal basic size = 'large' trigger = {<Icon name='chart line' link onClick={() => this.graphData(row.state)}/>}closeIcon>
                 <Header icon='chart line' content={row.state.concat(' - Recent Trends')} />
-                  {this.state.loading? <Loader>Loading...</Loader>:
+                  {this.state.loading? <Loader>This might take a few seconds ... Please be patient</Loader>:
                   <Modal.Content>
                     <LineChart data={this.state.graph_data.line_chart} width='95%' height="400px"/>
                   </Modal.Content>}
