@@ -14,7 +14,6 @@ app.use((req, res, next) => {
   next();
 });
 
-const hostname = "localhost";
 const {port} = process.env.PORT || 5000;
 
 app.use(express.static('./client/build'));
@@ -22,7 +21,6 @@ app.use(express.static('./client/build'));
 module.exports = app;
 
 
-
-app.listen(port, () => console.log(`Server running on port http://${hostname}:${port}`));
+app.listen(port, () => console.log(`Server running on port: ${port}`));
 const APIRouter = require('./routes/API');
 app.use('/', APIRouter);
