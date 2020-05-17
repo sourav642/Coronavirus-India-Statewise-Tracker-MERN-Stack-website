@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors')
 const APIRouter = require('./routes/API');
+var path = require('path');
 require('dotenv').config();
 
 app.use(cors());
@@ -26,6 +27,6 @@ app.get("*", (req, res) => { //our GET route needs to point to the index.html in
 
 module.exports = app;
 
-app.listen(app.get('port'), () => console.log('Server running on port:'+app.get('port'));
+app.listen(app.get('port'), () => console.log('Server running on port:'+app.get('port')));
 
 app.use('/', APIRouter);
