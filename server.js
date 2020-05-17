@@ -14,16 +14,18 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static('./frontend/build'));
+app.use(express.static('./client/build'));
 
 //const hostname = "localhost";
 app.set('port', process.env.PORT || 5000);
 
 
 app.get("*", (req, res) => { //our GET route needs to point to the index.html in our build
-  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
 });
 
-app.listen(app.get('port'), () => console.log(`Server running on port http://${hostname}:${port}`));
+module.exports = app;
+
+app.listen(app.get('port'), () => console.log('Server running on port:'+app.get('port'));
 
 app.use('/', APIRouter);
