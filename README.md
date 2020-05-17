@@ -1,1 +1,1 @@
-# Coronavirus-Inida-Statewise-Tracker-MERN-stack-website
+# Coronavirus-India-Statewise-Tracker-MERN-stack-website
