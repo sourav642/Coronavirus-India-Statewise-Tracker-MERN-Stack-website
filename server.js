@@ -14,7 +14,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const {port} = process.env.PORT || 5000;
+const {port} = process.env.WEBSITES_PORT || 5000;
 
 app.use(express.static('./client/build'));
 
