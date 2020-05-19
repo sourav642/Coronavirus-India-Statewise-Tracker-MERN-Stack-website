@@ -5,6 +5,8 @@ const MongoClient = require('mongodb').MongoClient;
 const dbConnectionUrl = process.env.DB_URI;
 var dbObject = null;
 const dbName = "Covid19-India-Statewise-DB"
+
+//Connect to the database 
 MongoClient.connect(dbConnectionUrl,{ useUnifiedTopology:true, useNewUrlParser:true,poolSize:10}, function(err, dbInstance) {
       if (err) {
           console.log(`[MongoDB connection] ERROR: ${err}`);
@@ -19,6 +21,7 @@ MongoClient.connect(dbConnectionUrl,{ useUnifiedTopology:true, useNewUrlParser:t
   //const dbCollection2 = dbObject.collection('Charts');
 
 
+// API calls
 router.route('/state-wise-data').get((req, res) => {
     dbObject.collection('Counts').find().maxTimeMS(100).toArray(function(err, result) {
         if (err) throw err;
